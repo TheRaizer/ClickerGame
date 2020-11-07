@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8589107511624343582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8589107511624343583}
+  - component: {fileID: 8589107511624343580}
+  - component: {fileID: 8589107511624343581}
+  - component: {fileID: 8589107511624343586}
+  m_Layer: 0
+  m_Name: GameMaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8589107511624343583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8589107511624343582}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.16057447, y: 0.84665966, z: -9.753514}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8589107511624343580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8589107511624343582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19351a1bc06552347be88d3adf915ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ClickCount>k__BackingField: 0
+  timeBetweenAutoClick: 0.5
+  countText: {fileID: 0}
+--- !u!114 &8589107511624343581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8589107511624343582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02682d525264422459b39d8b9e9cc035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolList:
+  - id: FollowerIcon
+    prefab: {fileID: 1074200031881342687, guid: c9dd058eec786464cb273d63d5f48fd1,
+      type: 3}
+    numberToSpawn: 100
+--- !u!114 &8589107511624343586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8589107511624343582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd88ffb6454afbb4a8e6b9c4ba1a4792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPoolsToSpawnFrom:
+  - FollowerIcon
+  topLeftSpawn: {fileID: 0}
+  topRightSpawn: {fileID: 0}
+  objectPooler: {fileID: 8589107511624343581}
