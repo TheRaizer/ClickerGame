@@ -61,10 +61,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolList:
-  - id: FollowerIcon
+  - id: FollowerPopup
     prefab: {fileID: 1074200031881342687, guid: c9dd058eec786464cb273d63d5f48fd1,
       type: 3}
-    numberToSpawn: 100
+    numberToSpawn: 50
+    parentObject: {fileID: 0}
 --- !u!114 &8589107511624343586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPoolsToSpawnFrom:
-  - FollowerIcon
+  - {fileID: 2564092993760886566, guid: c9dd058eec786464cb273d63d5f48fd1, type: 3}
   topLeftSpawn: {fileID: 0}
-  topRightSpawn: {fileID: 0}
+  bottomRightSpawn: {fileID: 0}
   objectPooler: {fileID: 8589107511624343581}

@@ -63,15 +63,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\ClickChecker.cs" />
-    <Compile Include="Assets\Scripts\ClickCountManager.cs" />
-    <Compile Include="Assets\Scripts\Icon.cs" />
-    <Compile Include="Assets\Scripts\IncreaseAutoClickItem.cs" />
+    <Compile Include="Assets\Scripts\Buttons\ExitButton.cs" />
+    <Compile Include="Assets\Scripts\Buttons\StoreButton.cs" />
+    <Compile Include="Assets\Scripts\ClickManagers\ClickChecker.cs" />
+    <Compile Include="Assets\Scripts\ClickManagers\ClickCountManager.cs" />
     <Compile Include="Assets\Scripts\ObjectPooler.cs" />
-    <Compile Include="Assets\Scripts\SpawnIcons.cs" />
-    <Compile Include="Assets\Scripts\SpriteFade.cs" />
+    <Compile Include="Assets\Scripts\PopupsScript\Popups.cs" />
+    <Compile Include="Assets\Scripts\PopupsScript\SpawnPopups.cs" />
+    <Compile Include="Assets\Scripts\SpriteGeneral\SpriteFade.cs" />
     <Compile Include="Assets\Scripts\StoreEnterExit.cs" />
-    <Compile Include="Assets\Scripts\StoreIcon.cs" />
+    <Compile Include="Assets\Scripts\StoreItems\BuffClickMultiplier.cs" />
+    <Compile Include="Assets\Scripts\StoreItems\IncreaseAutoClickItem.cs" />
+    <Compile Include="Assets\Scripts\StoreItems\Item.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
