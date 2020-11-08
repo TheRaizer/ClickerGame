@@ -67,9 +67,11 @@
     <Compile Include="Assets\Scripts\Buttons\StoreButton.cs" />
     <Compile Include="Assets\Scripts\ClickManagers\ClickChecker.cs" />
     <Compile Include="Assets\Scripts\ClickManagers\ClickCountManager.cs" />
+    <Compile Include="Assets\Scripts\FallngIcons\FallingIconsManager.cs" />
     <Compile Include="Assets\Scripts\ObjectPooler.cs" />
     <Compile Include="Assets\Scripts\PopupsScript\Popups.cs" />
     <Compile Include="Assets\Scripts\PopupsScript\SpawnPopups.cs" />
+    <Compile Include="Assets\Scripts\SpriteGeneral\DespawnOnTimer.cs" />
     <Compile Include="Assets\Scripts\SpriteGeneral\SpriteFade.cs" />
     <Compile Include="Assets\Scripts\StoreEnterExit.cs" />
     <Compile Include="Assets\Scripts\StoreItems\BuffClickMultiplier.cs" />

@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ClickCount>k__BackingField: 0
-  timeBetweenAutoClick: 0.5
   countText: {fileID: 0}
+  autoClicksPerSecond: {fileID: 0}
 --- !u!114 &8589107511624343581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,9 +62,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolList:
   - id: FollowerPopup
-    prefab: {fileID: 1074200031881342687, guid: c9dd058eec786464cb273d63d5f48fd1,
-      type: 3}
+    prefabs:
+    - {fileID: 1074200031881342687, guid: c9dd058eec786464cb273d63d5f48fd1, type: 3}
     numberToSpawn: 50
+    parentObject: {fileID: 0}
+  - id: FallingIcons
+    prefabs:
+    - {fileID: 6899779121751857928, guid: 47625d931ee1b104a8aa2d6db6b896a6, type: 3}
+    - {fileID: 8083731834827002896, guid: dec010ed2f25fc4429dee55d5392c167, type: 3}
+    - {fileID: 1846289392298946245, guid: 0528af8992ca8244f950c037baa2d3c7, type: 3}
+    numberToSpawn: 20
     parentObject: {fileID: 0}
 --- !u!114 &8589107511624343586
 MonoBehaviour:

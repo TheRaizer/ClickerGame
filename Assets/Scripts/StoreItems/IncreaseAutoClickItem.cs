@@ -2,7 +2,7 @@
 
 public class IncreaseAutoClickItem : Item
 {
-    [SerializeField] private float autoClickIncrease = 0;
+    [SerializeField] private float autoClickIncrease = 0;//autoclick increase of 0.1 means it will increase once per second.
 
     public override void OnUse()
     {

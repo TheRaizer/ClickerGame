@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ClickCountManager : MonoBehaviour
 {
+    [SerializeField] private float numberOfManualClicks = 0;
     [field: SerializeField] public long ClickCount { get; private set; }
-    private const float AUTO_CLICK_INTERVAL = 0.1f;
     [SerializeField] private TextMeshProUGUI countText = null;
-    [SerializeField] private TextMeshProUGUI autoClicksPerSecond = null; 
+    [SerializeField] private TextMeshProUGUI autoClicksPerSecond = null;
 
-    private float clickMultiplier = 1;
+    private readonly float clickMultiplier = 1;
 
     private float autoClickAmt = 0;
     private float timer = 0;
@@ -18,6 +18,8 @@ public class ClickCountManager : MonoBehaviour
 
     private float autoClickAmtDecimal = 0.0f;
     private float clickCountDecimal = 0.0f;
+
+    private const float AUTO_CLICK_INTERVAL = 0.1f;
 
     private void Update()
     {
@@ -37,7 +39,7 @@ public class ClickCountManager : MonoBehaviour
     private void UpdateAutoClicksPerSecondText()
     {
         //the value of (autoClickAmt + autoClickAmtDecimal) * 10 is the number of followers gained per second.
-        autoClicksPerSecond.text = "cps: " + Math.Round((autoClickAmt + autoClickAmtDecimal) * 10, 1);
+        autoClicksPerSecond.text = "per second: " + Math.Round((autoClickAmt + autoClickAmtDecimal) * 10, 1);
     }
 
     private void AutoClick()

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour
@@ -12,7 +11,7 @@ public class ObjectPooler : MonoBehaviour
     {
         public string id = "";
         public Queue<GameObject> gameObjects = new Queue<GameObject>();
-        public GameObject prefab;
+        public List<GameObject> prefabs;
         public int numberToSpawn = 0;
         public Transform parentObject = null;
     }
@@ -25,15 +24,18 @@ public class ObjectPooler : MonoBehaviour
 
             for(int i = 0; i < p.numberToSpawn; i++)
             {
-                GameObject g = Instantiate(p.prefab);
-                if(p.parentObject != null)
+                for (int j = 0; j < p.prefabs.Count; j++)
                 {
-                    g.transform.SetParent(p.parentObject.transform);
+                    GameObject g = Instantiate(p.prefabs[j]);
+                    if (p.parentObject != null)
+                    {
+                        g.transform.SetParent(p.parentObject.transform);
+                    }
+
+                    g.SetActive(false);
+
+                    p.gameObjects.Enqueue(g);
                 }
-
-                g.SetActive(false);
-
-                p.gameObjects.Enqueue(g);
             }
         }
     }
