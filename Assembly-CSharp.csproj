@@ -68,6 +68,12 @@
     <Compile Include="Assets\Scripts\ClickManagers\ClickChecker.cs" />
     <Compile Include="Assets\Scripts\ClickManagers\ClickCountManager.cs" />
     <Compile Include="Assets\Scripts\FallngIcons\FallingIconsManager.cs" />
+    <Compile Include="Assets\Scripts\MiniGame\MiniGameManager.cs" />
+    <Compile Include="Assets\Scripts\MiniGame\PhoneNumberMiniGame\DeleteNumber.cs" />
+    <Compile Include="Assets\Scripts\MiniGame\PhoneNumberMiniGame\EnterPhoneNumber.cs" />
+    <Compile Include="Assets\Scripts\MiniGame\PhoneNumberMiniGame\MiniGame.cs" />
+    <Compile Include="Assets\Scripts\MiniGame\PhoneNumberMiniGame\PhoneNumber.cs" />
+    <Compile Include="Assets\Scripts\MiniGame\PhoneNumberMiniGame\PhoneNumberMini.cs" />
     <Compile Include="Assets\Scripts\ObjectPooler.cs" />
     <Compile Include="Assets\Scripts\PopupsScript\Popups.cs" />
     <Compile Include="Assets\Scripts\PopupsScript\SpawnPopups.cs" />
