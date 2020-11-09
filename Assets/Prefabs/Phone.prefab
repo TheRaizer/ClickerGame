@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 1702301666991603706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1656063, y: 1.1656063, z: 1.1656063}
+  m_LocalScale: {x: 2.492649, y: 2.492649, z: 2.492649}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!114 &1702301666991603708
 MonoBehaviour:
@@ -90,5 +90,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickManager: {fileID: 0}
   spawnIcons: {fileID: 0}
-  sizeToShrinkToo: 1.130638
+  sizeToShrinkToo: 2.443045
   shrinkSpeed: 16

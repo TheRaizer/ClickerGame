@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PhoneNumberMini : MiniGame
 {
-    [SerializeField] private TextMeshProUGUI[] textNumbers = new TextMeshProUGUI[10];
     [SerializeField] private TextMeshProUGUI timerText = null;
+    [SerializeField] private TextMeshProUGUI guessText = null;
+    [SerializeField] private List<GameObject> objectsToDisableOnStart = null;
+    [SerializeField] private List<GameObject> objectsToEnableOnStart = null;
 
-    private List<string> phoneNumbers = new List<string>();
+    private readonly List<string> phoneNumbers = new List<string>();
     private string guessedPhoneNumber = "";
 
     private int numbersEntered = 0;
@@ -20,23 +22,24 @@ public class PhoneNumberMini : MiniGame
     private float timer = 0;
     private const float TIME_ALLOTED_MIN = 60;
     private const float TIME_ALLOTED_MAX = 90;
+    private const int MAX_NUMBER_OF_NUMS = 10;
 
     public override void OnMiniGameStart()
     {
         base.OnMiniGameStart();
         GeneratePhoneNumber();
+        OnEnterChangeActive();
+
         timer = Random.Range(TIME_ALLOTED_MIN, TIME_ALLOTED_MAX);
     }
 
     public override void OnMiniGameEnd()
     {
-        base.OnMiniGameEnd();
         phoneNumbers.Clear();
         guessedPhoneNumber = "";
-        foreach (TextMeshProUGUI t in textNumbers)
-        {
-            t.text = "";
-        }
+        UpdateGuess();
+        OnExitChangeActive();
+        base.OnMiniGameEnd();
     }
 
     public override void OnUpdate()
@@ -51,21 +54,36 @@ public class PhoneNumberMini : MiniGame
 
     public void DeleteNumber()
     {
-        textNumbers[numbersEntered].text = "";
-        guessedPhoneNumber.Remove(guessedPhoneNumber.Length - 1);
-        guessedPhoneNumber.Trim();
-        numbersEntered--;
+        if (numbersEntered > 0)
+        {
+            numbersEntered--;
+            guessedPhoneNumber = guessedPhoneNumber.Remove(guessedPhoneNumber.Length - 1);
+            if (numbersEntered == 3 || numbersEntered == 6)
+            {
+                guessedPhoneNumber = guessedPhoneNumber.Remove(guessedPhoneNumber.Length - 1);
+            }
+            UpdateGuess();
+        }
     }
 
     public void AddNumberToGuess(int num)
     {
-        guessedPhoneNumber += num.ToString();
-        textNumbers[numbersEntered].text = num.ToString();
-        numbersEntered++;
+        if (numbersEntered < MAX_NUMBER_OF_NUMS)
+        {
+            numbersEntered++;
+            if (numbersEntered == 4 || numbersEntered == 7)
+            {
+                guessedPhoneNumber += "-";
+            }
+            guessedPhoneNumber += num.ToString();
+            UpdateGuess();
+        }
     }
 
     public void CheckIfCorrect()
     {
+        guessedPhoneNumber = guessedPhoneNumber.Replace("-", "");
+
         if(guessedPhoneNumber == phoneNumbers[currentPhoneNumber])
         {
             if (currentPhoneNumber == phoneNumsToGenerate)
@@ -80,10 +98,7 @@ public class PhoneNumberMini : MiniGame
         }
 
         guessedPhoneNumber = "";
-        foreach(TextMeshProUGUI t in textNumbers)
-        {
-            t.text = "";
-        }
+        UpdateGuess();
     }
 
 
@@ -100,6 +115,31 @@ public class PhoneNumberMini : MiniGame
                 s += num.ToString();
             }
             phoneNumbers.Add(s);
+        }
+    }
+
+    private void UpdateGuess() => guessText.text = guessedPhoneNumber;
+
+    private void OnEnterChangeActive()
+    {
+        foreach(GameObject g in objectsToDisableOnStart)
+        {
+            g.SetActive(false);
+        }
+        foreach(GameObject g in objectsToEnableOnStart)
+        {
+            g.SetActive(true);
+        }
+    }
+    private void OnExitChangeActive()
+    {
+        foreach (GameObject g in objectsToDisableOnStart)
+        {
+            g.SetActive(true);
+        }
+        foreach (GameObject g in objectsToEnableOnStart)
+        {
+            g.SetActive(false);
         }
     }
 }

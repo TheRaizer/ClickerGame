@@ -30,6 +30,7 @@ public class ObjectPooler : MonoBehaviour
                     if (p.parentObject != null)
                     {
                         g.transform.SetParent(p.parentObject.transform);
+                        g.transform.localScale = p.prefabs[j].transform.localScale;
                     }
 
                     g.SetActive(false);
@@ -52,6 +53,25 @@ public class ObjectPooler : MonoBehaviour
         GameObject gameObject = pool.gameObjects.Dequeue();
         gameObject.transform.position = pos;
         gameObject.transform.rotation = rot;
+
+        gameObject.SetActive(true);
+        pool.gameObjects.Enqueue(gameObject);
+
+        return gameObject;
+    }
+
+    public GameObject SpawnUIObject(Vector2 pos, Quaternion rot, string poolId)
+    {
+        if (!pools.ContainsKey(poolId))
+        {
+            Debug.LogError("Object Pooler does not contain key " + poolId);
+            return null;
+        }
+
+        Pool pool = pools[poolId];
+        GameObject gameObject = pool.gameObjects.Dequeue();
+        gameObject.GetComponent<RectTransform>().anchoredPosition = pos;
+        gameObject.GetComponent<RectTransform>().rotation = rot;
 
         gameObject.SetActive(true);
         pool.gameObjects.Enqueue(gameObject);

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class DeleteNumber : MonoBehaviour, IPointerClickHandler
+public class DeleteNumber : MonoBehaviour
 {
     private PhoneNumberMini phoneNumberMini;
 
@@ -10,7 +9,7 @@ public class DeleteNumber : MonoBehaviour, IPointerClickHandler
         phoneNumberMini = FindObjectOfType<PhoneNumberMini>();
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPress()
     {
         phoneNumberMini.DeleteNumber();
     }

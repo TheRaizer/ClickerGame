@@ -69,13 +69,13 @@ MonoBehaviour:
   m_Sprite: {fileID: -6168301650379281949, guid: ebdfef782b5ecc245a075a1a4a7d1ed3,
     type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!114 &4907819133794479487
 MonoBehaviour:
