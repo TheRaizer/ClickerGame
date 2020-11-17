@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8589107511624343580}
   - component: {fileID: 8589107511624343581}
   - component: {fileID: 8589107511624343586}
+  - component: {fileID: 752928600}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -45,9 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19351a1bc06552347be88d3adf915ac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfManualClicks: 0
   <ClickCount>k__BackingField: 0
   countText: {fileID: 0}
   autoClicksPerSecond: {fileID: 0}
+  clickMultiplierText: {fileID: 0}
+  clickSlider: {fileID: 0}
 --- !u!114 &8589107511624343581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,7 +75,12 @@ MonoBehaviour:
     - {fileID: 6899779121751857928, guid: 47625d931ee1b104a8aa2d6db6b896a6, type: 3}
     - {fileID: 8083731834827002896, guid: dec010ed2f25fc4429dee55d5392c167, type: 3}
     - {fileID: 1846289392298946245, guid: 0528af8992ca8244f950c037baa2d3c7, type: 3}
-    numberToSpawn: 20
+    numberToSpawn: 75
+    parentObject: {fileID: 0}
+  - id: FallingMiniGame
+    prefabs:
+    - {fileID: 6053197224197583839, guid: 51393dad13c292849b53c9d3756285ec, type: 3}
+    numberToSpawn: 5
     parentObject: {fileID: 0}
 --- !u!114 &8589107511624343586
 MonoBehaviour:
@@ -90,3 +99,17 @@ MonoBehaviour:
   topLeftSpawn: {fileID: 0}
   bottomRightSpawn: {fileID: 0}
   objectPooler: {fileID: 8589107511624343581}
+--- !u!114 &752928600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8589107511624343582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9965f3c23e3109b4f97e75bae71f0be9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftSpawn: {fileID: 0}
+  rightSpawn: {fileID: 0}

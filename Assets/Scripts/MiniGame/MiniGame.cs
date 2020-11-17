@@ -2,6 +2,7 @@
 
 public class MiniGame : MonoBehaviour
 {
+    [field: SerializeField] public Sprite SpriteToFall { get; private set; }
     protected ClickCountManager clickCountManager;
     protected MiniGameManager miniGameManager;
 
@@ -9,13 +10,18 @@ public class MiniGame : MonoBehaviour
     {
         clickCountManager = FindObjectOfType<ClickCountManager>();
         miniGameManager = FindObjectOfType<MiniGameManager>();
-        miniGameManager.miniGames.Add(this);
+        miniGameManager.MiniGames.Add(this);
     }
 
     public virtual void OnMiniGameStart() { }
     public virtual void OnMiniGameEnd() 
     {
         miniGameManager.EmptyMiniGame();
+    }
+
+    public virtual void OnMiniGameVictory()
+    {
+        OnMiniGameEnd();
     }
 
     public virtual void OnUpdate() { }

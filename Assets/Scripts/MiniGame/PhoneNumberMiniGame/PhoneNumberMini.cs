@@ -6,8 +6,13 @@ public class PhoneNumberMini : MiniGame
 {
     [SerializeField] private TextMeshProUGUI timerText = null;
     [SerializeField] private TextMeshProUGUI guessText = null;
+    [SerializeField] private TextMeshProUGUI answerText = null;
+
     [SerializeField] private List<GameObject> objectsToDisableOnStart = null;
     [SerializeField] private List<GameObject> objectsToEnableOnStart = null;
+
+    [SerializeField] private float rewardMultiplierLength = 0;
+    [SerializeField] private float rewardMultiplierIncrease = 0;
 
     private readonly List<string> phoneNumbers = new List<string>();
     private string guessedPhoneNumber = "";
@@ -16,17 +21,27 @@ public class PhoneNumberMini : MiniGame
     private int currentPhoneNumber = 0;
 
     private int phoneNumsToGenerate = 0;
-    private const int NUM_TO_GENERATE_MAX = 5;
-    private const int NUM_TO_GENERATE_MIN = 3;
+    private const int NUM_TO_GENERATE_MAX = 1;
+    private const int NUM_TO_GENERATE_MIN = 1;
 
     private float timer = 0;
-    private const float TIME_ALLOTED_MIN = 60;
-    private const float TIME_ALLOTED_MAX = 90;
+    private const float TIME_ALLOTED_MIN = 30;
+    private const float TIME_ALLOTED_MAX = 45;
     private const int MAX_NUMBER_OF_NUMS = 10;
+
+    public override void OnMiniGameVictory()
+    {
+        clickCountManager.IncreaseBuffClickMultiplierTimed(rewardMultiplierIncrease, rewardMultiplierLength);
+        base.OnMiniGameVictory();
+    }
 
     public override void OnMiniGameStart()
     {
         base.OnMiniGameStart();
+        numbersEntered = 0;
+        currentPhoneNumber = 0;
+        guessText.text = "";
+
         GeneratePhoneNumber();
         OnEnterChangeActive();
 
@@ -37,6 +52,7 @@ public class PhoneNumberMini : MiniGame
     {
         phoneNumbers.Clear();
         guessedPhoneNumber = "";
+
         UpdateGuess();
         OnExitChangeActive();
         base.OnMiniGameEnd();
@@ -50,6 +66,7 @@ public class PhoneNumberMini : MiniGame
         {
             OnMiniGameEnd();//has lost
         }
+        timerText.text = "Time left: " + Mathf.RoundToInt(timer);
     }
 
     public void DeleteNumber()
@@ -82,15 +99,17 @@ public class PhoneNumberMini : MiniGame
 
     public void CheckIfCorrect()
     {
-        guessedPhoneNumber = guessedPhoneNumber.Replace("-", "");
-
         if(guessedPhoneNumber == phoneNumbers[currentPhoneNumber])
         {
-            if (currentPhoneNumber == phoneNumsToGenerate)
+            if (currentPhoneNumber == phoneNumsToGenerate - 1)
             {
-                //has won
+                OnMiniGameVictory();
             }
-            currentPhoneNumber++;
+            else
+            {
+                currentPhoneNumber++;
+                UpdateExpectedNumber();
+            }
         }
         else
         {
@@ -99,6 +118,7 @@ public class PhoneNumberMini : MiniGame
 
         guessedPhoneNumber = "";
         UpdateGuess();
+        numbersEntered = 0;
     }
 
 
@@ -113,12 +133,18 @@ public class PhoneNumberMini : MiniGame
             {
                 int num = Random.Range(0, 10);
                 s += num.ToString();
+                if(i == 2 || i == 5)
+                {
+                    s += "-";
+                }
             }
             phoneNumbers.Add(s);
         }
+        UpdateExpectedNumber();
     }
 
     private void UpdateGuess() => guessText.text = guessedPhoneNumber;
+    private void UpdateExpectedNumber() => answerText.text = "Call: " + phoneNumbers[currentPhoneNumber];
 
     private void OnEnterChangeActive()
     {

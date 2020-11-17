@@ -21,5 +21,6 @@ public class MiniGameObject : MonoBehaviour
     public void OnPress()
     {
         miniGameManager.ChangeMiniGame(MiniGame);
+        gameObject.SetActive(false);
     }
 }

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1074200031881342687}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.7, y: -1.29, z: 0}
-  m_LocalScale: {x: 2.4719589, y: 2.4719589, z: 2.4719589}
+  m_LocalScale: {x: 1.9, y: 1.9, z: 1.9}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -132,5 +132,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolId: FollowerPopup
-  maxScaleSize: 3.258783
-  minScaleSize: 1.784062
+  maxScaleSize: 3.1
+  minScaleSize: 1.4

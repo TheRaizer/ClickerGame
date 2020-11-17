@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MiniGameManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class MiniGameManager : MonoBehaviour
 
     [SerializeField] private float timer = 0f;
 
-    public List<MiniGame> miniGames = new List<MiniGame>();
+    public List<MiniGame> MiniGames { get; set; } = new List<MiniGame>();
     private MiniGame currentMiniGame = null;
     private ObjectPooler objectPooler;
 
@@ -20,7 +21,6 @@ public class MiniGameManager : MonoBehaviour
     {
         timer = intervalToRoll;
         objectPooler = FindObjectOfType<ObjectPooler>();
-        Debug.Log(rightSpawn.anchoredPosition.x);
     }
 
     private void Update()
@@ -51,14 +51,12 @@ public class MiniGameManager : MonoBehaviour
 
                     GameObject fallingMiniGame = objectPooler.SpawnUIObject(new Vector2(posX, posY), Quaternion.identity, "FallingMiniGame");
 
-                    int randomMiniGame = Random.Range(0, miniGames.Count);
-                    Vector3 anchor = fallingMiniGame.GetComponent<RectTransform>().anchoredPosition3D;
-                    anchor = new Vector3(anchor.x, anchor.y, 0);
-                    fallingMiniGame.GetComponent<RectTransform>().anchoredPosition3D = anchor;
+                    int randomMiniGame = Random.Range(0, MiniGames.Count);
+                    fallingMiniGame.GetComponent<RectTransform>().ZeroOutZ();
 
-                    fallingMiniGame.GetComponent<MiniGameObject>().MiniGame = miniGames[randomMiniGame];
-                    Debug.Log("enter minigame");
-                    //drop spawnMinigame symbol which will fall and may or may not be clicked.
+                    MiniGameObject miniGameObject = fallingMiniGame.GetComponent<MiniGameObject>();
+                    miniGameObject.MiniGame = MiniGames[randomMiniGame];
+                    fallingMiniGame.GetComponent<Image>().sprite = miniGameObject.MiniGame.SpriteToFall;
                 }
             }
         }
