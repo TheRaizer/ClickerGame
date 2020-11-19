@@ -33,8 +33,8 @@ public class PhoneNumberMini : MiniGame
     private int currentPhoneNumber = 0;
 
     private int phoneNumsToGenerate = 0;
-    private const int NUM_TO_GENERATE_MAX = 1;
-    private const int NUM_TO_GENERATE_MIN = 1;
+    private const int NUM_TO_GENERATE_MAX = 3;
+    private const int NUM_TO_GENERATE_MIN = 2;
 
     private float timer = 0;
     private const float TIME_ALLOTED_MIN = 30;

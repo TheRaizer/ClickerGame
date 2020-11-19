@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\BobTransform.cs" />
     <Compile Include="Assets\Scripts\Buttons\ExitButton.cs" />
     <Compile Include="Assets\Scripts\Buttons\StoreButton.cs" />
+    <Compile Include="Assets\Scripts\ChangeSceneOnClick.cs" />
     <Compile Include="Assets\Scripts\ClickManagers\ClickBoostTimer.cs" />
     <Compile Include="Assets\Scripts\ClickManagers\ClickChecker.cs" />
     <Compile Include="Assets\Scripts\ClickManagers\ClickCountManager.cs" />

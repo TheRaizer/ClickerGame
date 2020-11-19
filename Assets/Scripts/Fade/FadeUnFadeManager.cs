@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class FadeUnFadeManager : MonoBehaviour
 {
@@ -11,8 +12,11 @@ public class FadeUnFadeManager : MonoBehaviour
     protected Color baseColor;
     protected bool baseRaycastability = false;
 
-    public bool UnFade { get; set; } = false;
-    public bool Fade { get; set; } = false;
+    [field: SerializeField] public bool UnFade { get; set; } = false;
+    [field: SerializeField] public bool Fade { get; set; } = false;
+
+    public Action OnUnFaded { get; set; } = null;
+    public Action OnFaded { get; set; } = null;
 
     protected virtual void Awake()
     {
@@ -41,6 +45,7 @@ public class FadeUnFadeManager : MonoBehaviour
             {
                 Fade = true;
             }
+            OnUnFaded?.Invoke();
         }
 
         return color;
@@ -53,6 +58,7 @@ public class FadeUnFadeManager : MonoBehaviour
         if (color.a <= minAlpha)
         {
             Fade = false;
+            OnFaded?.Invoke();
         }
 
         return color;

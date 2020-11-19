@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - BobTransform
+    - ChangeSceneOnClick
     - ClickChecker
     - ClickCountManager
     - DeleteNumber
@@ -52,10 +53,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -86,8 +85,6 @@ ScriptsOnlyBuild:
     - Class: 28
       Script: {instanceID: 0}
     - Class: 48
-      Script: {instanceID: 0}
-    - Class: 49
       Script: {instanceID: 0}
     - Class: 50
       Script: {instanceID: 0}
@@ -136,71 +133,134 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12126}
     - Class: 114
-      Script: {instanceID: 12154}
+      Script: {instanceID: 12156}
     - Class: 114
-      Script: {instanceID: 12206}
+      Script: {instanceID: 12208}
     - Class: 114
-      Script: {instanceID: 12328}
+      Script: {instanceID: 12330}
     - Class: 114
-      Script: {instanceID: 12380}
+      Script: {instanceID: 12400}
     - Class: 114
-      Script: {instanceID: 12398}
+      Script: {instanceID: 12578}
     - Class: 114
-      Script: {instanceID: 12576}
+      Script: {instanceID: 12622}
     - Class: 114
-      Script: {instanceID: 12620}
+      Script: {instanceID: 12668}
     - Class: 114
-      Script: {instanceID: 12688}
+      Script: {instanceID: 12692}
     - Class: 114
-      Script: {instanceID: 12694}
+      Script: {instanceID: 12698}
     - Class: 114
-      Script: {instanceID: 12916}
+      Script: {instanceID: 12920}
     - Class: 114
-      Script: {instanceID: 12940}
+      Script: {instanceID: 12944}
     - Class: 114
-      Script: {instanceID: 13056}
+      Script: {instanceID: 13060}
     - Class: 114
-      Script: {instanceID: 13400}
+      Script: {instanceID: 13404}
     - Class: 114
-      Script: {instanceID: 13420}
+      Script: {instanceID: 13436}
     - Class: 114
-      Script: {instanceID: 13432}
+      Script: {instanceID: 13574}
     - Class: 114
-      Script: {instanceID: 13570}
+      Script: {instanceID: 13726}
     - Class: 114
-      Script: {instanceID: 13720}
+      Script: {instanceID: 13828}
     - Class: 114
-      Script: {instanceID: 13822}
+      Script: {instanceID: 14106}
     - Class: 114
-      Script: {instanceID: 14100}
+      Script: {instanceID: 14116}
     - Class: 114
-      Script: {instanceID: 14104}
+      Script: {instanceID: 14140}
+    - Class: 114
+      Script: {instanceID: 14174}
+    - Class: 114
+      Script: {instanceID: 14332}
+    - Class: 114
+      Script: {instanceID: 14348}
+    - Class: 114
+      Script: {instanceID: 14404}
+    - Class: 114
+      Script: {instanceID: 14430}
+    - Class: 114
+      Script: {instanceID: 14458}
+    - Class: 114
+      Script: {instanceID: 14460}
+    - Class: 114
+      Script: {instanceID: 14472}
+    - Class: 114
+      Script: {instanceID: 14504}
+    - Class: 114
+      Script: {instanceID: 14514}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/MainMenuScene.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11274}
+    - Class: 114
+      Script: {instanceID: 11298}
+    - Class: 114
+      Script: {instanceID: 11648}
+    - Class: 114
+      Script: {instanceID: 12330}
+    - Class: 114
+      Script: {instanceID: 12382}
+    - Class: 114
+      Script: {instanceID: 12668}
+    - Class: 114
+      Script: {instanceID: 13060}
+    - Class: 114
+      Script: {instanceID: 13404}
+    - Class: 114
+      Script: {instanceID: 13424}
+    - Class: 114
+      Script: {instanceID: 13828}
     - Class: 114
       Script: {instanceID: 14110}
     - Class: 114
-      Script: {instanceID: 14134}
+      Script: {instanceID: 14458}
     - Class: 114
-      Script: {instanceID: 14168}
-    - Class: 114
-      Script: {instanceID: 14326}
-    - Class: 114
-      Script: {instanceID: 14342}
-    - Class: 114
-      Script: {instanceID: 14398}
-    - Class: 114
-      Script: {instanceID: 14424}
-    - Class: 114
-      Script: {instanceID: 14452}
-    - Class: 114
-      Script: {instanceID: 14464}
-    - Class: 114
-      Script: {instanceID: 14496}
-    - Class: 114
-      Script: {instanceID: 14506}
-    - Class: 114
-      Script: {instanceID: 40990}
-    - Class: 114
-      Script: {instanceID: 55526}
+      Script: {instanceID: 16346}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -552,6 +612,12 @@ ScriptsOnlyBuild:
     className: DespawnOnTimer
   - hash:
       serializedVersion: 2
+      Hash: 1c2eabae659b68321c022843351ff9ea
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BobTransform
+  - hash:
+      serializedVersion: 2
       Hash: d4020bafcd3ccbb5601a6e6c8ac78be0
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -612,7 +678,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: d21ca0a6542f77d10ddeeb0504ec4415
+      Hash: 0ed27ce9348188afe91487db9ad109e6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ImageFade
@@ -700,6 +766,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ClickCountManager
+  - hash:
+      serializedVersion: 2
+      Hash: 0ed27ce9348188afe91487db9ad109e6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FadeUnFadeManager
   - hash:
       serializedVersion: 2
       Hash: 6939772cb3ce775a8e8d99f332534491
@@ -858,6 +930,12 @@ ScriptsOnlyBuild:
     className: StandaloneInputModule
   - hash:
       serializedVersion: 2
+      Hash: 0ed27ce9348188afe91487db9ad109e6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TextFade
+  - hash:
+      serializedVersion: 2
       Hash: 744aa7b0d0af7e1e0cbfcfd54bc1a9b4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -906,23 +984,12 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 1c2eabae659b68321c022843351ff9ea
+      Hash: 066717b3445a2febd877d649bd571709
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: BobTransform
-  - hash:
-      serializedVersion: 2
-      Hash: d21ca0a6542f77d10ddeeb0504ec4415
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: FadeUnFadeManager
-  - hash:
-      serializedVersion: 2
-      Hash: d21ca0a6542f77d10ddeeb0504ec4415
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: TextFade
+    className: ChangeSceneOnClick
   platform: 13
   scenePathNames:
+  - Assets/Scenes/MainMenuScene.unity
   - Assets/Scenes/ClickingScene.unity
   playerPath: C:/UnityBuiltGames/ClickerRipOff/ClickerGame.apk
