@@ -1,18 +1,30 @@
 ﻿using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PhoneNumberMini : MiniGame
 {
-    [SerializeField] private TextMeshProUGUI timerText = null;
-    [SerializeField] private TextMeshProUGUI guessText = null;
-    [SerializeField] private TextMeshProUGUI answerText = null;
+    [Header("Animations")]
+    [SerializeField] private Animator animator = null;
 
+    [Header("Text Components")]
+    [SerializeField] private Text timerText = null;
+    [SerializeField] private Text guessText = null;
+    [SerializeField] private Text answerText = null;
+
+    [Header("Punishments")]
+    [SerializeField] private float timeDeductionOnWrong = 5f;
+    [SerializeField] private ImageFade filterFlash = null;
+
+    [Header("Objects to Manage")]
+    [SerializeField] private GameObject miniGamePhone = null;
     [SerializeField] private List<GameObject> objectsToDisableOnStart = null;
-    [SerializeField] private List<GameObject> objectsToEnableOnStart = null;
+    [SerializeField] private List<Image> dialNumbers = null;
 
+    [Header("Rewards")]
     [SerializeField] private float rewardMultiplierLength = 0;
     [SerializeField] private float rewardMultiplierIncrease = 0;
+
 
     private readonly List<string> phoneNumbers = new List<string>();
     private string guessedPhoneNumber = "";
@@ -32,6 +44,7 @@ public class PhoneNumberMini : MiniGame
     public override void OnMiniGameVictory()
     {
         clickCountManager.IncreaseBuffClickMultiplierTimed(rewardMultiplierIncrease, rewardMultiplierLength);
+        animator.SetTrigger("SlideOut");
         base.OnMiniGameVictory();
     }
 
@@ -46,6 +59,7 @@ public class PhoneNumberMini : MiniGame
         OnEnterChangeActive();
 
         timer = Random.Range(TIME_ALLOTED_MIN, TIME_ALLOTED_MAX);
+        animator.SetTrigger("SlideIn");
     }
 
     public override void OnMiniGameEnd()
@@ -55,6 +69,8 @@ public class PhoneNumberMini : MiniGame
 
         UpdateGuess();
         OnExitChangeActive();
+        filterFlash.ResetColor();
+        animator.SetTrigger("SlideOut");
         base.OnMiniGameEnd();
     }
 
@@ -67,6 +83,7 @@ public class PhoneNumberMini : MiniGame
             OnMiniGameEnd();//has lost
         }
         timerText.text = "Time left: " + Mathf.RoundToInt(timer);
+
     }
 
     public void DeleteNumber()
@@ -101,7 +118,7 @@ public class PhoneNumberMini : MiniGame
     {
         if(guessedPhoneNumber == phoneNumbers[currentPhoneNumber])
         {
-            if (currentPhoneNumber == phoneNumsToGenerate - 1)
+            if (currentPhoneNumber == phoneNumsToGenerate - 1)//is it the final number
             {
                 OnMiniGameVictory();
             }
@@ -113,14 +130,18 @@ public class PhoneNumberMini : MiniGame
         }
         else
         {
-            //do something when wrong like flash red
+            filterFlash.UnFade = true;
+            timer -= timeDeductionOnWrong;//do something to signal this
+            if(timer < 0)
+            {
+                timer = 0;
+            }
         }
 
         guessedPhoneNumber = "";
-        UpdateGuess();
         numbersEntered = 0;
+        UpdateGuess();
     }
-
 
     private void GeneratePhoneNumber()
     {
@@ -150,22 +171,29 @@ public class PhoneNumberMini : MiniGame
     {
         foreach(GameObject g in objectsToDisableOnStart)
         {
-            g.SetActive(false);
+            FadeUnFadeManager fadeManager = g.GetComponent<FadeUnFadeManager>();
+            fadeManager.DisableInteractivity();
+            fadeManager.Fade = true;
+            fadeManager.UnFade = false;
         }
-        foreach(GameObject g in objectsToEnableOnStart)
+        miniGamePhone.SetActive(true);
+        foreach (Image i in dialNumbers)
         {
-            g.SetActive(true);
+            i.raycastTarget = true;
         }
     }
     private void OnExitChangeActive()
     {
         foreach (GameObject g in objectsToDisableOnStart)
         {
-            g.SetActive(true);
+            FadeUnFadeManager fadeManager = g.GetComponent<FadeUnFadeManager>();
+            fadeManager.EnableInteractivity();
+            fadeManager.UnFade = true;
+            fadeManager.Fade = false;
         }
-        foreach (GameObject g in objectsToEnableOnStart)
+        foreach (Image i in dialNumbers)
         {
-            g.SetActive(false);
+            i.raycastTarget = false;
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,15 +7,15 @@ public class ClickCountManager : MonoBehaviour
 {
     [SerializeField] private int numberOfManualClicks = 0;
     [field: SerializeField] public long ClickCount { get; private set; }
-    [SerializeField] private TextMeshProUGUI countText = null;
-    [SerializeField] private TextMeshProUGUI autoClicksPerSecond = null;
-    [SerializeField] private TextMeshProUGUI clickMultiplierText = null;
+    [SerializeField] private Text countText = null;
+    [SerializeField] private Text autoClicksPerSecond = null;
+    [SerializeField] private Text clickMultiplierText = null;
     [SerializeField] private Slider clickSlider = null;
 
     public ClickSliderManager ClickSliderManager { get; private set; }
     private readonly List<ClickBoostTimer> boostTimers = new List<ClickBoostTimer>();
 
-    public float baseClickMultiplier = 1;
+    private float baseClickMultiplier = 1;
 
     private float autoClickAmt = 0;
     private float timer = 0;
@@ -58,8 +57,6 @@ public class ClickCountManager : MonoBehaviour
         }
     }
 
-    //the value of (autoClickAmt + autoClickAmtDecimal) * 10 is the number of followers gained per second.
-    private void UpdateAutoClicksPerSecondText() => autoClicksPerSecond.text = "per second: " + Math.Round((autoClickAmt + autoClickAmtDecimal) * 10, 1);
 
     private void AutoClick()
     {
@@ -98,20 +95,23 @@ public class ClickCountManager : MonoBehaviour
         return (int)(baseClickMultiplier * buffedClickMultiplier);
     }
 
+    public void IncrementManualClicks() => numberOfManualClicks++;
     public void IncreaseBuffClickMultiplierTimed(float amt, float time)
     {
         buffedClickMultiplier *= amt;
-        Debug.Log(amt);
         boostTimers.Add(new ClickBoostTimer(time, amt, DecreaseBuffMultiplier));
         UpdateClickMultiplierText();
     }
-
     public void IncreaseBuffClickMultiplier(float amt)
     {
         buffedClickMultiplier *= amt;
         UpdateClickMultiplierText();
     }
-
+    public void IncreaseBaseClickMultiplier(float amt)
+    {
+        baseClickMultiplier *= amt;
+        UpdateClickMultiplierText();
+    }
     public void DecreaseBuffMultiplier(float amt)
     {
         buffedClickMultiplier /= amt;
@@ -174,13 +174,12 @@ public class ClickCountManager : MonoBehaviour
         }
     }
     public void AddToAutoClickAmt(float amt) => autoClickAmt += amt;
+    private void UpdateCountText() => countText.text = "Followers: " + string.Format("{0:n0}", ClickCount);
+    private void UpdateClickMultiplierText() => clickMultiplierText.text = string.Format("{0:n0}", GetClickAmount()) + "x";
 
-    private void UpdateCountText() => countText.text = "Followers: " + ClickCount;
-    private void UpdateClickMultiplierText() => clickMultiplierText.text = GetClickAmount() + "x";
-
-
-    private void OnApplicationQuit()
+    //the value of (autoClickAmt + autoClickAmtDecimal) * 10 is the number of followers gained per second.
+    private void UpdateAutoClicksPerSecondText()
     {
-        SaveSystem.Instance.SaveClickerData();
+        autoClicksPerSecond.text = "per second: " + string.Format("{0:n0}", Math.Round((autoClickAmt + autoClickAmtDecimal) * 10, 1).ToString());
     }
 }

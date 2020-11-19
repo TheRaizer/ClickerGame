@@ -63,16 +63,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BobTransform.cs" />
     <Compile Include="Assets\Scripts\Buttons\ExitButton.cs" />
     <Compile Include="Assets\Scripts\Buttons\StoreButton.cs" />
     <Compile Include="Assets\Scripts\ClickManagers\ClickBoostTimer.cs" />
     <Compile Include="Assets\Scripts\ClickManagers\ClickChecker.cs" />
     <Compile Include="Assets\Scripts\ClickManagers\ClickCountManager.cs" />
     <Compile Include="Assets\Scripts\ClickManagers\ClickSliderManager.cs" />
+    <Compile Include="Assets\Scripts\Fade\FadeUnFadeManager.cs" />
+    <Compile Include="Assets\Scripts\Fade\ImageFade.cs" />
+    <Compile Include="Assets\Scripts\Fade\SpriteFade.cs" />
+    <Compile Include="Assets\Scripts\Fade\TextFade.cs" />
+    <Compile Include="Assets\Scripts\Fade\TextRiseFade.cs" />
     <Compile Include="Assets\Scripts\FallngIcons\FallingIconsManager.cs" />
-    <Compile Include="Assets\Scripts\Items\BuffClickMultiplier.cs" />
     <Compile Include="Assets\Scripts\Items\IncreaseAutoClickItem.cs" />
     <Compile Include="Assets\Scripts\Items\Item.cs" />
+    <Compile Include="Assets\Scripts\Items\LevelUpClickMultiplier.cs" />
     <Compile Include="Assets\Scripts\MiniGame\MiniGame.cs" />
     <Compile Include="Assets\Scripts\MiniGame\MiniGameManager.cs" />
     <Compile Include="Assets\Scripts\MiniGame\MiniGameObject.cs" />
@@ -95,13 +101,12 @@
     <Compile Include="Assets\Scripts\PopupsScript\SpawnPopups.cs" />
     <Compile Include="Assets\Scripts\RectTransformExt\RectTransformExtensions.cs" />
     <Compile Include="Assets\Scripts\SaveData\ClickerData.cs" />
+    <Compile Include="Assets\Scripts\SaveData\MiniGameData.cs" />
     <Compile Include="Assets\Scripts\SaveData\SaveSystem.cs" />
     <Compile Include="Assets\Scripts\SaveData\StoreItemData.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
     <Compile Include="Assets\Scripts\SpriteGeneral\DespawnOnTimer.cs" />
-    <Compile Include="Assets\Scripts\SpriteGeneral\SpriteFade.cs" />
     <Compile Include="Assets\Scripts\StoreManager.cs" />
-    <Compile Include="Assets\Scripts\TextScripts\TextRiseFade.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

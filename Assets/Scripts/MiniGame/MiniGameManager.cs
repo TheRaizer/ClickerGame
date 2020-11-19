@@ -23,9 +23,44 @@ public class MiniGameManager : MonoBehaviour
         objectPooler = FindObjectOfType<ObjectPooler>();
     }
 
+    private void Start()
+    {
+        LoadMiniGameDataIntoVariables();
+    }
+
     private void Update()
     {
-        if (currentMiniGame == null) 
+        ManageFallingObjects();
+
+        if (currentMiniGame != null)
+        {
+            currentMiniGame.OnUpdate();
+        }
+    }
+
+    public MiniGameData GenerateMiniGameData()
+    {
+        MiniGameData miniGameData = new MiniGameData()
+        {
+            timer = timer
+        };
+
+        return miniGameData;
+    }
+
+    public void ChangeMiniGame(MiniGame miniGame)
+    {
+        currentMiniGame = miniGame;
+        currentMiniGame.OnMiniGameStart();
+    }
+    public void EmptyMiniGame()
+    {
+        currentMiniGame = null;
+    }
+
+    private void ManageFallingObjects()
+    {
+        if (currentMiniGame == null)
         {
             timer -= Time.deltaTime;
 
@@ -64,21 +99,11 @@ public class MiniGameManager : MonoBehaviour
         {
             timer = intervalToRoll;
         }
-
-        if(currentMiniGame != null)
-        {
-            currentMiniGame.OnUpdate();
-        }
     }
-
-    public void ChangeMiniGame(MiniGame miniGame)
+    private void LoadMiniGameDataIntoVariables()
     {
-        currentMiniGame = miniGame;
-        currentMiniGame.OnMiniGameStart();
+        MiniGameData data = SaveSystem.Instance.LoadMiniGameData();
+        timer = data.timer;
     }
 
-    public void EmptyMiniGame()
-    {
-        currentMiniGame = null;
-    }
 }

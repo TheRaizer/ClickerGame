@@ -7,8 +7,8 @@ public class ClickSliderManager
     private readonly ClickCountManager clickCountManager;
     private float timer = 0f;
     private const float DRAIN_INTERVAL = 1f;
-    private const float MAXED_DRAIN_INTERVAL = 0.05f;
-    private const float CLICK_MULTIPLIER_SCALE = 20f;
+    private const float MAXED_DRAIN_INTERVAL = 0.01f;
+    private const float CLICK_MULTIPLIER_SCALE = 5f;
 
     public bool Maxed { get; set; }
 

@@ -4,32 +4,54 @@ using UnityEngine;
 
 public class SaveSystem : Singleton<SaveSystem>
 {
+    private const float ANDROID_SAVE_INTERVAL = 0.5f;
+    private float androidSaveTimer;
+
     private string clickerDataPath;
     private string storeItemDataPath;
+    private string miniGameDataPath;
 
     private ClickCountManager clickManager;
     private StoreManager storeManager;
+    private MiniGameManager miniGameManager;
 
     private void Awake()
     {
         clickManager = FindObjectOfType<ClickCountManager>();
         storeManager = FindObjectOfType<StoreManager>();
+        miniGameManager = FindObjectOfType<MiniGameManager>();
+
         clickerDataPath = Path.Combine(Application.persistentDataPath, "clickerData.dat");
         storeItemDataPath = Path.Combine(Application.persistentDataPath, "storeItemData.dat");
+        miniGameDataPath = Path.Combine(Application.persistentDataPath, "miniGameData.dat");
 
-        if (clickManager == null || storeManager == null)
+        if (clickManager == null || storeManager == null || miniGameManager == null)
         {
             Debug.LogError("Needed save system objects not found");
         }
+
+        androidSaveTimer = ANDROID_SAVE_INTERVAL;
     }
 
-    public void EraseFiles()
+    private void Update()
     {
-        File.Delete(clickerDataPath);
-        File.Delete(storeItemDataPath);
+        AndroidSave();
     }
 
-    public void SaveClickerData()
+    private void AndroidSave()
+    {
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            androidSaveTimer -= Time.deltaTime;
+            if (androidSaveTimer <= 0)
+            {
+                androidSaveTimer = ANDROID_SAVE_INTERVAL;
+                SaveAllData();
+            }
+        }
+    }
+
+    private void SaveClickerData()
     {
         BinaryFormatter formatter = new BinaryFormatter();
 
@@ -38,10 +60,9 @@ public class SaveSystem : Singleton<SaveSystem>
             ClickerData data = clickManager.GenerateClickerData();
 
             formatter.Serialize(stream, data);
-            Debug.Log("save click data");
             stream.Close();
         }
-        
+
     }
 
     public ClickerData LoadClickerData()
@@ -51,10 +72,8 @@ public class SaveSystem : Singleton<SaveSystem>
             BinaryFormatter formatter = new BinaryFormatter();
             using (FileStream stream = new FileStream(clickerDataPath, FileMode.Open))
             {
-
                 ClickerData data = formatter.Deserialize(stream) as ClickerData;
                 stream.Close();
-                Debug.Log("load click data");
                 return data;
             }
         }
@@ -65,16 +84,14 @@ public class SaveSystem : Singleton<SaveSystem>
         }
     }
 
-    public void SaveStoreItemData()
+    private void SaveStoreItemData()
     {
         BinaryFormatter formatter = new BinaryFormatter();
         using (FileStream stream = new FileStream(storeItemDataPath, FileMode.Create))
         {
-
             StoreItemData data = storeManager.GenerateStoreItemData();
 
             formatter.Serialize(stream, data);
-            Debug.Log("save store data");
             stream.Close();
         }
     }
@@ -86,10 +103,8 @@ public class SaveSystem : Singleton<SaveSystem>
             BinaryFormatter formatter = new BinaryFormatter();
             using (FileStream stream = new FileStream(storeItemDataPath, FileMode.Open))
             {
-
                 StoreItemData data = formatter.Deserialize(stream) as StoreItemData;
                 stream.Close();
-                Debug.Log("load store data");
                 return data;
             }
         }
@@ -98,5 +113,48 @@ public class SaveSystem : Singleton<SaveSystem>
             Debug.Log("no file found in " + storeItemDataPath);
             return null;
         }
+    }
+
+    public void SaveMiniGameData()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        using (FileStream stream = new FileStream(miniGameDataPath, FileMode.Create))
+        {
+            MiniGameData data = miniGameManager.GenerateMiniGameData();
+
+            formatter.Serialize(stream, data);
+            stream.Close();
+        }
+    }
+
+    public MiniGameData LoadMiniGameData()
+    {
+        if (File.Exists(miniGameDataPath))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream stream = new FileStream(miniGameDataPath, FileMode.Open))
+            {
+                MiniGameData data = formatter.Deserialize(stream) as MiniGameData;
+                stream.Close();
+                return data;
+            }
+        }
+        else
+        {
+            Debug.Log("no file found in " + miniGameDataPath);
+            return null;
+        }
+    }
+
+    private void SaveAllData()
+    {
+        SaveClickerData();
+        SaveStoreItemData();
+        SaveMiniGameData();
+    }
+
+    public void OnApplicationQuit()
+    {
+        SaveAllData();
     }
 }

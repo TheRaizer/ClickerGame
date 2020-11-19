@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using TMPro;
 using System;
+using UnityEngine.UI;
 
 public class IncreaseAutoClickItem : Item
 {
     [SerializeField] private float autoClickIncrease = 0;//autoclick increase of 0.1 means it will increase once per second.
-    [SerializeField] private TextMeshProUGUI clickIncreaseText = null;
+    [SerializeField] private Text autoIncreaseText = null;
 
     protected override void Awake()
     {
@@ -13,7 +13,7 @@ public class IncreaseAutoClickItem : Item
         UpdateClickIncreaseText();
     }
 
-    private void UpdateClickIncreaseText() => clickIncreaseText.text = Math.Round(autoClickIncrease * 10, 2).ToString();
+    private void UpdateClickIncreaseText() => autoIncreaseText.text = string.Format("{0:n0}", Math.Round(autoClickIncrease * 10, 2).ToString());
 
     public override void OnUse()
     {

@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - BobTransform
     - ClickChecker
     - ClickCountManager
     - DeleteNumber
@@ -8,7 +9,9 @@ ScriptsOnlyBuild:
     - EnterPhoneNumber
     - ExitButton
     - FallingIconsManager
+    - ImageFade
     - IncreaseAutoClickItem
+    - LevelUpClickMultiplier
     - MiniGameManager
     - MiniGameObject
     - ObjectPooler
@@ -28,6 +31,7 @@ ScriptsOnlyBuild:
     - SpriteFade
     - StoreButton
     - StoreManager
+    - TextFade
     - TextRiseFade
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
@@ -45,6 +49,14 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -60,6 +72,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Slider
+    - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/ClickingScene.unity:
     - Class: 1
@@ -95,57 +108,63 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11272}
     - Class: 114
-      Script: {instanceID: 11300}
+      Script: {instanceID: 11274}
     - Class: 114
-      Script: {instanceID: 11388}
+      Script: {instanceID: 11298}
     - Class: 114
-      Script: {instanceID: 11458}
+      Script: {instanceID: 11386}
     - Class: 114
-      Script: {instanceID: 11474}
+      Script: {instanceID: 11456}
     - Class: 114
-      Script: {instanceID: 11480}
+      Script: {instanceID: 11472}
     - Class: 114
-      Script: {instanceID: 11600}
+      Script: {instanceID: 11478}
     - Class: 114
-      Script: {instanceID: 11650}
+      Script: {instanceID: 11598}
     - Class: 114
-      Script: {instanceID: 11752}
+      Script: {instanceID: 11648}
     - Class: 114
-      Script: {instanceID: 11810}
+      Script: {instanceID: 11750}
     - Class: 114
-      Script: {instanceID: 11848}
+      Script: {instanceID: 11808}
     - Class: 114
-      Script: {instanceID: 11872}
+      Script: {instanceID: 11846}
     - Class: 114
-      Script: {instanceID: 12120}
+      Script: {instanceID: 11870}
     - Class: 114
-      Script: {instanceID: 12128}
+      Script: {instanceID: 12118}
     - Class: 114
-      Script: {instanceID: 12156}
+      Script: {instanceID: 12126}
     - Class: 114
-      Script: {instanceID: 12208}
+      Script: {instanceID: 12154}
     - Class: 114
-      Script: {instanceID: 12330}
+      Script: {instanceID: 12206}
     - Class: 114
-      Script: {instanceID: 12382}
+      Script: {instanceID: 12328}
     - Class: 114
-      Script: {instanceID: 12400}
+      Script: {instanceID: 12380}
     - Class: 114
-      Script: {instanceID: 12578}
+      Script: {instanceID: 12398}
     - Class: 114
-      Script: {instanceID: 12622}
+      Script: {instanceID: 12576}
     - Class: 114
-      Script: {instanceID: 12690}
+      Script: {instanceID: 12620}
     - Class: 114
-      Script: {instanceID: 12696}
+      Script: {instanceID: 12688}
     - Class: 114
-      Script: {instanceID: 12918}
+      Script: {instanceID: 12694}
     - Class: 114
-      Script: {instanceID: 12942}
+      Script: {instanceID: 12916}
+    - Class: 114
+      Script: {instanceID: 12940}
+    - Class: 114
+      Script: {instanceID: 13056}
     - Class: 114
       Script: {instanceID: 13400}
     - Class: 114
       Script: {instanceID: 13420}
+    - Class: 114
+      Script: {instanceID: 13432}
     - Class: 114
       Script: {instanceID: 13570}
     - Class: 114
@@ -178,6 +197,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 14496}
     - Class: 114
       Script: {instanceID: 14506}
+    - Class: 114
+      Script: {instanceID: 40990}
+    - Class: 114
+      Script: {instanceID: 55526}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -203,6 +226,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Button
+  - hash:
+      serializedVersion: 2
+      Hash: aeb62f729c52c814dec86c47dcac1471
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Text
   - hash:
       serializedVersion: 2
       Hash: 4bc4346a71a8df53a6b106f68ef3a190
@@ -241,7 +270,7 @@ ScriptsOnlyBuild:
     className: PhoneNumber6
   - hash:
       serializedVersion: 2
-      Hash: c26ceac372c582fddf9dd879179c35ef
+      Hash: 7a624b94f6ba6b4d69d5fdbbdd700f63
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: IncreaseAutoClickItem
@@ -275,12 +304,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ActivationTrack
-  - hash:
-      serializedVersion: 2
-      Hash: aeb62f729c52c814dec86c47dcac1471
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Text
   - hash:
       serializedVersion: 2
       Hash: 499fd23433e68e265d153aa6b95d0047
@@ -379,7 +402,7 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 70540f271c5f8920eab39956ead98c3d
+      Hash: 45266f43d9e73dee3a9ec42c99875a8d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SpriteFade
@@ -514,6 +537,12 @@ ScriptsOnlyBuild:
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
+    className: SaveSystem
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
     className: DeleteNumber
   - hash:
       serializedVersion: 2
@@ -535,7 +564,7 @@ ScriptsOnlyBuild:
     className: SpawnPopups
   - hash:
       serializedVersion: 2
-      Hash: d89cec05b116ae40fba4e26dbca72d82
+      Hash: 486c1c7b0912c07174b0e280cbb895c0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Item
@@ -581,6 +610,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextContainer
+  - hash:
+      serializedVersion: 2
+      Hash: d21ca0a6542f77d10ddeeb0504ec4415
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ImageFade
   - hash:
       serializedVersion: 2
       Hash: f84d945e5e1ca985698660fc26e9657f
@@ -649,10 +684,10 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-      Hash: f33fb339962adbd5d325c7adef21b687
+      Hash: 10f9f4f01b39a7b2a865f4a54be9c22a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: BuffClickMultiplier
+    className: LevelUpClickMultiplier
   - hash:
       serializedVersion: 2
       Hash: c1933cc0a2f4ff6eb13333347497beb3
@@ -661,7 +696,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 1b7e95e761c4776f3e2234f18c5e3905
+      Hash: 2ac9bb70cbfc9dd48096823117b31112
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ClickCountManager
@@ -823,7 +858,7 @@ ScriptsOnlyBuild:
     className: StandaloneInputModule
   - hash:
       serializedVersion: 2
-      Hash: 9d69535be54b87831c4bf1958e2cd203
+      Hash: 744aa7b0d0af7e1e0cbfcfd54bc1a9b4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PhoneNumberMini
@@ -869,6 +904,24 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 1c2eabae659b68321c022843351ff9ea
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BobTransform
+  - hash:
+      serializedVersion: 2
+      Hash: d21ca0a6542f77d10ddeeb0504ec4415
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FadeUnFadeManager
+  - hash:
+      serializedVersion: 2
+      Hash: d21ca0a6542f77d10ddeeb0504ec4415
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TextFade
   platform: 13
   scenePathNames:
   - Assets/Scenes/ClickingScene.unity

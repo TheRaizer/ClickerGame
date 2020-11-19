@@ -37,12 +37,14 @@ public class StoreManager : MonoBehaviour
     {
         StoreItemData data = new StoreItemData()
         {
-            costs = new int[Items.Count]
+            costs = new int[Items.Count],
+            restrictedUses = new bool[Items.Count]
         };
 
         for(int i = 0; i < data.costs.Length; i++)
         {
-            data.costs[i] = Items[i].cost;
+            data.costs[i] = Items[i].Cost;
+            data.restrictedUses[i] = Items[i].RestrictUse;
         }
 
         return data;
@@ -55,14 +57,10 @@ public class StoreManager : MonoBehaviour
         {
             for (int i = 0; i < data.costs.Length; i++)
             {
-                Items[i].cost = data.costs[i];
+                Items[i].Cost = data.costs[i];
+                Items[i].RestrictUse = data.restrictedUses[i];
             }
         }
-    }
-
-    private void OnApplicationQuit()
-    {
-        SaveSystem.Instance.SaveStoreItemData();
     }
 
     //Animation Event Methods

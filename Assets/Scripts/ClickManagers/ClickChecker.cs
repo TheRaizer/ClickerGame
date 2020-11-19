@@ -70,6 +70,7 @@ public class ClickChecker : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         spawnIcons.Spawn();
         clickManager.IncreaseClickCount(clickManager.GetClickAmount());
+        clickManager.IncrementManualClicks();
         clickManager.ClickSliderManager.IncrementSlider();
 
         RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, canvas.worldCamera, out Vector2 pos);

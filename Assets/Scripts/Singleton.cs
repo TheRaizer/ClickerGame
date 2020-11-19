@@ -22,7 +22,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                 if (m_Instance == null)
                 {
                     m_Instance = (T)FindObjectOfType(typeof(T));
-                    Debug.Log("Return instance found");
                     if (m_Instance == null)
                     {
                         GameObject singletonObject = new GameObject();
