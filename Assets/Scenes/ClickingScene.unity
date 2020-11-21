@@ -1408,7 +1408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e129a3552c366742b56e0d7d076244c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chanceToRollMiniGame: 80
+  chanceToRollMiniGame: 75
   intervalToRoll: 20
   veryRightSpawn: {fileID: 627452872}
   rightSpawn: {fileID: 1586320407}

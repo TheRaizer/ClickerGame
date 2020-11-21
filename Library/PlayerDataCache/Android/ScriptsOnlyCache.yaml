@@ -175,23 +175,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14174}
     - Class: 114
-      Script: {instanceID: 14332}
+      Script: {instanceID: 14334}
     - Class: 114
-      Script: {instanceID: 14348}
+      Script: {instanceID: 14350}
     - Class: 114
-      Script: {instanceID: 14404}
+      Script: {instanceID: 14406}
     - Class: 114
-      Script: {instanceID: 14430}
-    - Class: 114
-      Script: {instanceID: 14458}
+      Script: {instanceID: 14432}
     - Class: 114
       Script: {instanceID: 14460}
     - Class: 114
-      Script: {instanceID: 14472}
+      Script: {instanceID: 14462}
     - Class: 114
-      Script: {instanceID: 14504}
+      Script: {instanceID: 14474}
     - Class: 114
-      Script: {instanceID: 14514}
+      Script: {instanceID: 14506}
+    - Class: 114
+      Script: {instanceID: 14516}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -258,9 +258,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14110}
     - Class: 114
-      Script: {instanceID: 14458}
+      Script: {instanceID: 14308}
     - Class: 114
-      Script: {instanceID: 16346}
+      Script: {instanceID: 14460}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -852,6 +852,12 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
+      Hash: 066717b3445a2febd877d649bd571709
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ChangeSceneOnClick
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
@@ -982,12 +988,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 066717b3445a2febd877d649bd571709
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ChangeSceneOnClick
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainMenuScene.unity
